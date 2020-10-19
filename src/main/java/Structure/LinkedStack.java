@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class LinkedStack<T extends Comparable<T>> implements Stack<T> {
 
-    protected ChainNode<T> topNode;
+    protected Nodo<T> topNode;
 
     public LinkedStack() {
 
@@ -34,7 +34,7 @@ public class LinkedStack<T extends Comparable<T>> implements Stack<T> {
 
     @Override
     public void push(T theElement) {
-        topNode = new ChainNode<>(theElement, topNode);
+        topNode = new Nodo<>(theElement, topNode);
     }
 
     @Override

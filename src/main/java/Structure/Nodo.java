@@ -5,17 +5,17 @@
  */
 package Structure;
 
-public class ChainNode<T extends Comparable>{
+public class Nodo<T extends Comparable>{
 
     private T data;
-    private ChainNode<T> next;
+    private Nodo<T> next;
 
-    public ChainNode(T data) {
+    public Nodo(T data) {
         this.data = data;
         next = null;
     }
 
-    public ChainNode(T data, ChainNode<T> next) {
+    public Nodo(T data, Nodo<T> next) {
         this.data = data;
         this.next = next;
     }
@@ -28,11 +28,11 @@ public class ChainNode<T extends Comparable>{
         this.data = data;
     }
 
-    public ChainNode getNext() {
+    public Nodo getNext() {
         return next;
     }
 
-    public void setNext(ChainNode<T> next) {
+    public void setNext(Nodo<T> next) {
         this.next = next;
     }
 }

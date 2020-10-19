@@ -9,18 +9,18 @@ package Structure;
  *
  * @author causugamo
  */
-public class LinkedLis<T extends Comparable> {
+public class LinkedList<T extends Comparable> {
 
-    private ChainNode head;
-    private ChainNode tail;
+    private Nodo head;
+    private Nodo tail;
 
-    public LinkedLis() {
+    public LinkedList() {
         this.head = null;
         this.tail = null;
     }
 
     public void pushFront(T key) {
-        ChainNode node = new ChainNode(key, this.head);
+        Nodo node = new Nodo(key, this.head);
         this.head = node;
         if (this.tail == null) {
             this.tail = this.head;
@@ -38,12 +38,12 @@ public class LinkedLis<T extends Comparable> {
         }
     }
 
-    public ChainNode getHead() {
+    public Nodo getHead() {
         return this.head;
     }
 
     public void pushBack(T key) {
-        ChainNode node = new ChainNode(key, null);
+        Nodo node = new Nodo(key, null);
         if (this.head == null) {
             this.tail = node;
             this.head = this.tail;
@@ -61,7 +61,7 @@ public class LinkedLis<T extends Comparable> {
             this.tail = null;
             this.head = tail;
         } else {
-            ChainNode p = this.head;
+            Nodo p = this.head;
             while (p.getNext().getNext() != null) {
                 p = p.getNext();
             }
@@ -70,11 +70,24 @@ public class LinkedLis<T extends Comparable> {
         }
     }
 
-    public void addAfter(ChainNode node, T key) {
-        ChainNode nod = new ChainNode(key, node.getNext());
+    public void addAfter(Nodo node, T key) {
+        Nodo nod = new Nodo(key, node.getNext());
         node.setNext(nod);
         if (this.tail == node) {
             this.tail = nod;
+        }
+    }
+
+    public void printL() {
+        Nodo R = this.head;
+        if (R==null){
+            System.out.println("Lista vacía");
+            return;
+        }
+        while (R!=null) {
+            System.out.println(R.getData());
+            R=R.getNext();
+
         }
     }
 }

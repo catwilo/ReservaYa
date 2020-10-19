@@ -13,11 +13,11 @@ import java.util.*;
  */
 public class LinkedQueue<T extends Comparable<T>> implements Queue<T> {
 
-    protected ChainNode<T> front;
-    protected ChainNode<T> rear;
+    protected Nodo<T> front;
+    protected Nodo<T> tail;
 
     public LinkedQueue() {
-        front = rear = null;
+        front = tail = null;
     }
 
     @Override
@@ -32,18 +32,18 @@ public class LinkedQueue<T extends Comparable<T>> implements Queue<T> {
 
     @Override
     public T getRearElement() {
-        return isEmpty() ? null : rear.getData();
+        return isEmpty() ? null : tail.getData();
     }
 
     @Override
-    public void put(T theElement) {
-        ChainNode<T> p = new ChainNode<>(theElement, null);
+    public void push(T theElement) {
+        Nodo<T> p = new Nodo<>(theElement, null);
         if (front == null) {
             front = p;
         } else {
-            rear.setNext(p);
+            tail.setNext(p);
         }
-        rear = p;
+        tail = p;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class LinkedQueue<T extends Comparable<T>> implements Queue<T> {
         T frontElement = front.getData();
         front = front.getNext();
         if (isEmpty()) {
-            rear = null;
+            tail = null;
         }
         return frontElement;
     }
