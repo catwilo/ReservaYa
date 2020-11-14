@@ -12,9 +12,9 @@ package Structure;
  */
 public class TrieNode<T extends Comparable<? super T>> {
 
-    T data;
-    TrieNode right;
-    TrieNode left;
+    private T data;
+    private TrieNode right;
+    private TrieNode left;
 
     public TrieNode(T data) {
         this.data = data;
