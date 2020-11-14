@@ -26,6 +26,7 @@ public class BTree<T extends Comparable> {
         return root == null;
     }
 
+ 
     public TrieNode insert(T data, TrieNode temp) {
         if (temp == null) {
             return new TrieNode (data);

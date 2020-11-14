@@ -8,8 +8,9 @@ package Structure;
 /**
  *
  * @author W1
+ * @param <T>
  */
-class TrieNode<T extends Comparable<? super T>> {
+public class TrieNode<T extends Comparable<? super T>> {
 
     T data;
     TrieNode right;
