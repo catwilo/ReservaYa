@@ -18,14 +18,6 @@ public class AVL<T extends Comparable> {
         this.root = null;
     }
 
-    public void makeEmpty() {
-        this.root = null;
-    }
-
-    public boolean isEmpty() {
-        return root == null;
-    }
-
     private int height(AVLNode temp) {
         return (temp == null) ? -1 : temp.getHeight();
     }
@@ -66,12 +58,6 @@ public class AVL<T extends Comparable> {
         return rightRightCase(nodoDesbalanced);
     }
 
-    public AVLNode insert(T data) {
-        //devuelve el nodo donde inserto el valor data
-        AVLNode aux = insert(data, this.root);
-        return aux;
-    }
-
     private AVLNode insert(T data, AVLNode temp) {
         if (temp == null) {
             temp = new AVLNode(data);
@@ -100,10 +86,6 @@ public class AVL<T extends Comparable> {
         return temp;
     }
 
-    public int countNodes() {
-        return countNodes(this.root);
-    }
-
     private int countNodes(AVLNode pater) {
         if (pater == null) {
             return 0;
@@ -113,25 +95,6 @@ public class AVL<T extends Comparable> {
             contador += countNodes(pater.getRight());
             return contador;
         }
-    }
-
-    public AVLNode findMin(AVLNode temp) {
-        if (temp == null) {
-            return null;
-        }
-        if (temp.getLeft() == null) {
-            return temp;
-        }
-
-        return findMin(temp.getLeft());
-    }
-
-    public AVLNode remove(T data) {
-        return remove(data, root);
-    }
-
-    public AVLNode contains(T data) {
-        return contains(data, this.root);
     }
 
     private AVLNode remove(T data, AVLNode temp) {
@@ -174,5 +137,110 @@ public class AVL<T extends Comparable> {
         }*/
 
         return null;
+    }
+
+    private AVLNode search(T data, AVLNode temp) {
+        while (temp != null) {
+            if (data.compareTo(temp.getData()) > 0) {
+                temp = temp.getRight();
+            } else if (data.compareTo(temp.getData()) < 0) {
+                temp = temp.getLeft();
+            } else {
+                break;
+            }
+            temp = search(data, temp);
+        }
+        return temp;
+    }
+
+    private void inOrder(AVLNode temp) {
+        if (temp != null) {
+            inOrder(temp.getLeft());
+            System.out.print(temp.getData() + " - ");
+            inOrder(temp.getRight());
+        }
+    }
+
+    private void preOrder(AVLNode temp) {
+        if (temp != null) {
+            System.out.print(temp.getData() + " - ");
+            preOrder(temp.getLeft());
+            preOrder(temp.getRight());
+        }
+    }
+
+    private void postOrder(AVLNode temp) {
+        if (temp != null) {
+            postOrder(temp.getLeft());
+            postOrder(temp.getRight());
+            System.out.print(temp.getData() + " - ");
+        }
+    }
+
+    public void makeEmpty() {
+        this.root = null;
+    }
+
+    public AVLNode insert(T data) {
+        //devuelve el nodo donde inserto el valor data
+        AVLNode aux = insert(data, this.root);
+        return aux;
+    }
+
+    public AVLNode search(T data) {
+        return search(data, this.root);
+    }
+
+    public AVLNode findMin(AVLNode temp) {
+        if (temp == null) {
+            return null;
+        }
+        if (temp.getLeft() == null) {
+            return temp;
+        }
+
+        return findMin(temp.getLeft());
+    }
+
+    public AVLNode findMax(AVLNode temp) {
+        if (temp == null) {
+            return null;
+        }
+        if (temp.getRight() == null) {
+            return temp;
+        }
+        return findMax(temp.getRight());
+    }
+
+    public AVLNode remove(T data) {
+        return remove(data, root);
+    }// por corregir
+
+    public AVLNode contains(T data) {
+        return contains(data, this.root);
+    }
+
+    public int countNodes() {
+        return countNodes(this.root);
+    }
+
+    public boolean isEmpty() {
+        return root == null;
+    }
+
+    public int height() {
+        return height(this.root);
+    }
+
+    public void inOrder() {
+        inOrder(this.root);
+    }
+
+    public void preOrder() {
+        preOrder(this.root);
+    }
+
+    public void postOrder() {
+        postOrder(this.root);
     }
 }
