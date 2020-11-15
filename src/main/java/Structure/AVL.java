@@ -27,15 +27,43 @@ public class AVL<T extends Comparable> {
     }
 
     private int height(AVLNode temp) {
-        return (temp == null)? -1 : temp.getHeight();
+        return (temp == null) ? -1 : temp.getHeight();
     }
-    private AVLNode RotarRight (AVLNode nodoDesbalanced){
+
+    private AVLNode rotarLeft(AVLNode nodoDesbalanced) {
         AVLNode nodoASubir = nodoDesbalanced.getRight();
         nodoDesbalanced.setRight(nodoASubir.getLeft());
         nodoASubir.setLeft(nodoDesbalanced);
         nodoDesbalanced.reHeight();//re calculo sus alturas
         nodoASubir.reHeight();
         return nodoASubir;
+    }
+
+    private AVLNode rotarRight(AVLNode nodoDesbalanced) {
+        AVLNode nodoASubir = nodoDesbalanced.getLeft();
+        nodoDesbalanced.setLeft(nodoASubir.getRight());
+        nodoASubir.setRight(nodoDesbalanced);
+        nodoDesbalanced.reHeight();//re calculo sus alturas
+        nodoASubir.reHeight();
+        return nodoASubir;
+    }
+
+    private AVLNode leftLeftCase(AVLNode node) {
+        return rotarRight(node);
+    }
+
+    private AVLNode leftRightCase(AVLNode nodoDesbalanced) {
+        nodoDesbalanced.setLeft(rotarLeft(nodoDesbalanced.getLeft()));
+        return leftLeftCase(nodoDesbalanced);
+    }
+
+    private AVLNode rightRightCase(AVLNode node) {
+        return rotarLeft(node);
+    }
+
+    private AVLNode rightLeftCase(AVLNode nodoDesbalanced) {
+        nodoDesbalanced.setRight(rotarRight(nodoDesbalanced.getRight()));
+        return rightRightCase(nodoDesbalanced);
     }
 
     public AVLNode insert(T data) {
@@ -49,30 +77,43 @@ public class AVL<T extends Comparable> {
             temp = new AVLNode(data);
         } else if (data.compareTo(temp.getData()) > 0) {
             temp.setRight(insert(data, temp.getRight()));
+            if (height(temp.getRight()) - height(temp.getLeft()) == 2) {
+                if (data.compareTo(temp.getRight().getData()) > 0) {
+                    temp = rightRightCase(temp);
+                } else {
+                    temp = rightLeftCase(temp);
+                }
+            }
         } else if (data.compareTo(temp.getData()) < 0) {
             temp.setLeft(insert(data, temp.getLeft()));
+            if (height(temp.getLeft()) - height(temp.getRight()) == 2) {
+                if (data.compareTo(temp.getLeft().getData()) < 0) {
+                    temp = leftLeftCase(temp);
+                } else {
+                    temp = leftRightCase(temp);
+                }
+            }
         }
         /*else { // para valores duplicados
             
         }*/
         return temp;
     }
-    public int countNodes()
-     {
-         return countNodes(this.root);
-     }
-     private int countNodes(AVLNode pater)
-     {
-         if (pater == null)
-             return 0;
-         else
-         {
-             int contador = 1;
-             contador += countNodes(pater.getLeft());
-             contador += countNodes(pater.getRight());
-             return contador;
-         }
-     }
+
+    public int countNodes() {
+        return countNodes(this.root);
+    }
+
+    private int countNodes(AVLNode pater) {
+        if (pater == null) {
+            return 0;
+        } else {
+            int contador = 1;
+            contador += countNodes(pater.getLeft());
+            contador += countNodes(pater.getRight());
+            return contador;
+        }
+    }
 
     public AVLNode findMin(AVLNode temp) {
         if (temp == null) {
