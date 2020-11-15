@@ -10,7 +10,7 @@ package Structure;
  * @author W1
  * @param <T>
  */
-public class TrieNode<T extends Comparable<? super T>> {
+public class TrieNode<T extends Comparable> {
 
     private T data;
     private TrieNode right;

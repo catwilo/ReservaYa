@@ -19,7 +19,7 @@ public class ReservaYa {
      * @throws java.io.FileNotFoundException
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        // TODO code application logic here
+        /*        // TODO code application logic here
         //CARGAR LISTAS DE USUARIOS Y RESTAURANTES
         LinkedList R = loadRest();
         //LinkedList U = loadUsers();
@@ -28,11 +28,20 @@ public class ReservaYa {
         String name = "Ultimo dato";
         Restaurant w = findNameRest(name, R);
         System.out.println(w.getName() + " igual a: " + name);
-/*
+        /*
         //ACTUALIZAR Nombre DE RESTAURANTE
         String NuevoName = "newName";
         UpdateRest(name, NuevoName, R);
-*/
+         */
+
+        AVL arbol = new AVL();
+        arbol.insert(100);
+        arbol.insert(50);
+        arbol.insert(200);
+        arbol.insert(40);
+        arbol.insert(55);
+        arbol.insert(53);
+
     }
 
     static private void UpdateRest(String namebefore, String nameafter, LinkedList A) {

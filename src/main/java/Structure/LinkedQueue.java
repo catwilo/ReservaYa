@@ -10,6 +10,7 @@ import java.util.*;
 /**
  *
  * @author causugamo
+ * @param <T>
  */
 public class LinkedQueue<T extends Comparable<T>> implements Queue<T> {
 

@@ -27,46 +27,8 @@ public class BTree<T extends Comparable> {
     }
 
     public TrieNode insert(T data) {
+        //devuelve el nodo donde inserto el valor data
         return insert(data, root);
-    }
-
-    private TrieNode insert(T data, TrieNode temp) {
-        if (temp == null) {
-            return new TrieNode(data);
-        }
-        if (data.compareTo(temp.getData()) > 0) {
-            temp.setRight(insert(data, temp.getRight()));
-        } else if (data.compareTo(temp.getData()) < 0) {
-            temp.setLeft(insert(data, temp.getLeft()));
-        }
-        /*else { // para valores duplicados
-            
-        }*/
-        return temp;
-    }
-
-    public TrieNode contains(T data) {
-        return contains(data, this.root);
-    }
-
-    private TrieNode contains(T data, TrieNode temp) {
-        //devuelve el nodo con el dato o el nodo que seria el padre
-        if (temp == null) {
-            return temp;
-        }
-        int comparacion = data.compareTo(temp.getData());
-        if (comparacion > 0) {
-            return contains(data, temp.getRight());
-        }
-        if (comparacion < 0) {
-            return contains(data, temp.getLeft());
-
-        }
-        /*else { // para valores duplicados
-            
-        }*/
-
-        return null;
     }
 
     public TrieNode findMin(TrieNode temp) {
@@ -82,6 +44,38 @@ public class BTree<T extends Comparable> {
 
     public TrieNode remove(T data) {
         return remove(data, root);
+    }
+
+    public int height() {
+        return height(this.root);
+    }
+
+    public TrieNode contains(T data) {
+        return contains(data, this.root);
+    }
+
+    private int height(TrieNode temp) {
+        if (temp == null) {
+            return -1;
+        } else {
+            return 1 + Math.max(height(temp.getLeft()), height(temp.getRight()));
+        }
+    }
+
+    private TrieNode insert(T data, TrieNode temp) {
+        if (temp == null) {
+            temp = new TrieNode(data);
+            return temp;
+        }
+        if (data.compareTo(temp.getData()) > 0) {
+            temp.setRight(insert(data, temp.getRight()));
+        } else if (data.compareTo(temp.getData()) < 0) {
+            temp.setLeft(insert(data, temp.getLeft()));
+        }
+        /*else { // para valores duplicados
+            
+        }*/
+        return temp;
     }
 
     private TrieNode remove(T data, TrieNode temp) {
@@ -106,11 +100,24 @@ public class BTree<T extends Comparable> {
         return temp;
     }
 
-    private int height(TrieNode temp) {
+    private TrieNode contains(T data, TrieNode temp) {
+        //devuelve el nodo con el dato o el nodo que seria el padre
         if (temp == null) {
-            return -1;
-        } else {
-            return 1 + Math.max(height(temp.getLeft()), height(temp.getRight()));
+            return temp;
         }
+        int comparacion = data.compareTo(temp.getData());
+        if (comparacion > 0) {
+            return contains(data, temp.getRight());
+        }
+        if (comparacion < 0) {
+            return contains(data, temp.getLeft());
+
+        }
+        /*else { // para valores duplicados
+            
+        }*/
+
+        return null;
     }
+
 }

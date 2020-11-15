@@ -7,12 +7,19 @@ package Structure;
 
 /**
  *
- * @author causugamo
+ * @author W1
  * @param <T>
  */
-public interface Stack <T extends Comparable>{
-    boolean isEmpty ();
-    T peek ();
-    void push ( T theObject );
-    T pop();
+public class AVL <T extends Comparable> extends BTree<T> {
+    AVLNode  root;
+    public AVL() {
+        super();
+    }
+
+    @Override
+    public TrieNode insert(T data) {
+        return null;
+    }
+    
+
 }

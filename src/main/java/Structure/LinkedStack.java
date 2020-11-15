@@ -10,6 +10,7 @@ import java.util.*;
 /**
  *
  * @author causugamo
+ * @param <T>
  */
 public class LinkedStack<T extends Comparable<T>> implements Stack<T> {
 

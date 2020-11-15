@@ -8,6 +8,7 @@ package Structure;
 /**
  *
  * @author causugamo
+ * @param <T>
  */
 public class LinkedList<T extends Comparable> {
 
