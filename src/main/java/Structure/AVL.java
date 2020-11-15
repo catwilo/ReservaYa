@@ -60,7 +60,8 @@ public class AVL<T extends Comparable> {
 
     private AVLNode insert(T data, AVLNode temp) {
         if (temp == null) {
-            temp = new AVLNode(data);
+            temp = new AVLNode();
+            temp.setData(data);
         } else if (data.compareTo(temp.getData()) > 0) {
             temp.setRight(insert(data, temp.getRight()));
             if (height(temp.getRight()) - height(temp.getLeft()) == 2) {
@@ -183,8 +184,8 @@ public class AVL<T extends Comparable> {
 
     public AVLNode insert(T data) {
         //devuelve el nodo donde inserto el valor data
-        AVLNode aux = insert(data, this.root);
-        return aux;
+        this.root = insert(data, this.root);
+        return this.root;
     }
 
     public AVLNode search(T data) {
@@ -243,4 +244,13 @@ public class AVL<T extends Comparable> {
     public void postOrder() {
         postOrder(this.root);
     }
+
+    public AVLNode getRoot() {
+        return root;
+    }
+
+    public void setRoot(AVLNode root) {
+        this.root = root;
+    }
+
 }

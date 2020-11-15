@@ -41,9 +41,10 @@ public class ReservaYa {
         arbol.insert(40);
         arbol.insert(55);
         arbol.insert(53);
+        arbol.preOrder();
 
     }
-
+/*
     static private void UpdateRest(String namebefore, String nameafter, LinkedList A) {
         Nodo R = findRest(namebefore, A);
         ((Restaurant) R.getData()).setName(nameafter);
@@ -87,7 +88,7 @@ public class ReservaYa {
         FileReader F = null;
         try {
             F = new FileReader("Restauran3.csv");
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
             System.out.println("No existe el archivo");
         }
         BufferedReader br = new BufferedReader(F);
@@ -98,7 +99,7 @@ public class ReservaYa {
             lisR.pushBack(new Restaurant(R[0], Integer.parseInt(R[1])));
             try {
                 R = br.readLine().split(";");
-            } catch (Exception r) {
+            } catch (IOException r) {
                 R[0] = null;
             }
         }
@@ -123,12 +124,12 @@ public class ReservaYa {
             lisU.pushBack(new User(Integer.parseInt(U[0]), Integer.parseInt(U[1]), U[2]));
             try {
                 U = br.readLine().split(";");
-            } catch (Exception r) {
+            } catch (IOException r) {
                 U[0] = null;
             }
         }
         long fin = System.nanoTime();
         System.out.println("Tiempo loadUsers(): " + (fin - inicio) * 1.0e-9);
         return lisU;
-    }
+    }*/
 }

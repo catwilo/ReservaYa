@@ -5,8 +5,6 @@
  */
 package Structure;
 
-import java.util.*;
-
 /**
  *
  * @author causugamo
