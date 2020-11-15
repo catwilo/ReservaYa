@@ -26,12 +26,16 @@ public class AVL<T extends Comparable> {
         return root == null;
     }
 
-    private int height(TrieNode temp) {
-        if (temp == null) {
-            return -1;
-        } else {
-            return 1 + Math.max(height(temp.getLeft()), height(temp.getRight()));
-        }
+    private int height(AVLNode temp) {
+        return (temp == null)? -1 : temp.getHeight();
+    }
+    private AVLNode RotarRight (AVLNode nodoDesbalanced){
+        AVLNode nodoASubir = nodoDesbalanced.getRight();
+        nodoDesbalanced.setRight(nodoASubir.getLeft());
+        nodoASubir.setLeft(nodoDesbalanced);
+        nodoDesbalanced.reHeight();//re calculo sus alturas
+        nodoASubir.reHeight();
+        return nodoASubir;
     }
 
     public AVLNode insert(T data) {
@@ -43,9 +47,7 @@ public class AVL<T extends Comparable> {
     private AVLNode insert(T data, AVLNode temp) {
         if (temp == null) {
             temp = new AVLNode(data);
-            return temp;
-        }
-        if (data.compareTo(temp.getData()) > 0) {
+        } else if (data.compareTo(temp.getData()) > 0) {
             temp.setRight(insert(data, temp.getRight()));
         } else if (data.compareTo(temp.getData()) < 0) {
             temp.setLeft(insert(data, temp.getLeft()));
@@ -55,6 +57,22 @@ public class AVL<T extends Comparable> {
         }*/
         return temp;
     }
+    public int countNodes()
+     {
+         return countNodes(this.root);
+     }
+     private int countNodes(AVLNode pater)
+     {
+         if (pater == null)
+             return 0;
+         else
+         {
+             int contador = 1;
+             contador += countNodes(pater.getLeft());
+             contador += countNodes(pater.getRight());
+             return contador;
+         }
+     }
 
     public AVLNode findMin(AVLNode temp) {
         if (temp == null) {
@@ -66,13 +84,16 @@ public class AVL<T extends Comparable> {
 
         return findMin(temp.getLeft());
     }
+
     public AVLNode remove(T data) {
         return remove(data, root);
     }
+
     public AVLNode contains(T data) {
         return contains(data, this.root);
     }
-     private AVLNode remove(T data, AVLNode temp) {
+
+    private AVLNode remove(T data, AVLNode temp) {
         if (temp == null) {
             return temp;
         }
