@@ -14,6 +14,10 @@ public class User implements Comparable {
     int id, age;
     String name, email;
 
+    public User(String name) {
+        this.name = name;
+    }
+
     public User(int id, int age, String name) {
         this.id = id;
         this.age = age;
@@ -51,7 +55,6 @@ public class User implements Comparable {
     public void setEmail(String email) {
         this.email = email;
     }
-    
 
     @Override
     public int compareTo(Object o) {

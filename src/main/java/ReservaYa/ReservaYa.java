@@ -28,7 +28,7 @@ public class ReservaYa {
 
         /*//BUSCAR UN RESTAURANTE POR EL NOMBRE/**/
         String name = "be";
-        Restaurant restauranteEncontrado = findNameRest(name, arbolRestaurants);
+        Restaurant restauranteEncontrado = (Restaurant) (findRest(name, arbolRestaurants)).getData();
         System.out.println(restauranteEncontrado.getName() + " igual a: " + name);
         /*Eliminar un restaurante/**//*
         arbolRestaurants.remove(restauranteEncontrado);
@@ -37,7 +37,7 @@ public class ReservaYa {
 
  /**/
         //ACTUALIZAR Nombre DE RESTAURANTE
-        String NuevoName = "ae";
+        String NuevoName = "nuevoNombre";
         updateRest(name, NuevoName, arbolRestaurants);
         /**/
 
@@ -79,27 +79,26 @@ public class ReservaYa {
         System.out.println("Nombre del Restaurante " + namebefore + " cambiado a: " + r.getName());
     }
 
+    static private AVLNode findUser(String name, AVL arbolUsers) {
+        long inicio = System.nanoTime();
+
+        User U = new User(name);
+        AVLNode usuarioEncontrado = arbolUsers.search(U);//retorna nodo buscado
+        long fin = System.nanoTime();
+        System.out.println("Tiempo en encontrar un USER: " + (fin - inicio) * 1.0e-9);
+        return usuarioEncontrado;
+
+    }
+
     static private AVLNode findRest(String name, AVL arbolRestaurants) {
         long inicio = System.nanoTime();
 
         Restaurant R = new Restaurant(name);
-        AVLNode aux = arbolRestaurants.search(R);//retorna nodo buscado
+        AVLNode restauranteEncontrado = arbolRestaurants.search(R);//retorna nodo buscado
         long fin = System.nanoTime();
-        System.out.println("Tiempo findNameRest(): " + (fin - inicio) * 1.0e-9);
-        return aux;
+        System.out.println("Tiempo en encontrar un RESTAURANT: " + (fin - inicio) * 1.0e-9);
+        return restauranteEncontrado;
 
-    }
-
-    static private Restaurant findNameRest(String name, AVL arbolRestaurants) {
-        long inicio = System.nanoTime();
-        AVLNode restauranteEncontrado = findRest(name, arbolRestaurants);
-        if (restauranteEncontrado != null) {
-            return (Restaurant) restauranteEncontrado.getData();
-        }
-
-        long fin = System.nanoTime();
-        System.out.println("Tiempo findNameRest(): " + (fin - inicio) * 1.0e-9);
-        return null;
     }
 
     static private AVL loadUsers(AVL arbol) throws IOException {
