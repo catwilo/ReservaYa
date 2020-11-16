@@ -159,9 +159,10 @@ public class AVL<T extends Comparable> {
 
     private AVLNode search(T data, AVLNode temp) {
         while (temp != null) {
-            if (data.compareTo(temp.getData()) > 0) {
+            int t = data.compareTo(temp.getData());
+            if (t > 0) {
                 temp = temp.getRight();
-            } else if (data.compareTo(temp.getData()) < 0) {
+            } else if (t < 0) {
                 temp = temp.getLeft();
             } else {
                 break;

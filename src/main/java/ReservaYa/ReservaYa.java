@@ -67,7 +67,10 @@ public class ReservaYa {
 
     static private void updateRest(String namebefore, String nameafter, AVL A) {
         AVLNode R = findRest(namebefore, A);
-        ((Restaurant) R.getData()).setName(nameafter);
+        Restaurant r = (Restaurant) R.getData();
+        r.setName(nameafter);
+        A.remove(r);
+        A.insert(r);
 
     }
 
