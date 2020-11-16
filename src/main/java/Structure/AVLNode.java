@@ -13,7 +13,7 @@ package Structure;
 public class AVLNode<T extends Comparable> {
 
     private int height;
-    T data;
+    private T data;
     private AVLNode right;
     private AVLNode left;
 
@@ -64,9 +64,4 @@ public class AVLNode<T extends Comparable> {
     public void setData(T data) {
         this.data = data;
     }
-
-    static private AVLNode loadRest() {
-        return null;
-    }
-
 }

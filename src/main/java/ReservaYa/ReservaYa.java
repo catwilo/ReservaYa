@@ -19,118 +19,134 @@ public class ReservaYa {
      * @throws java.io.FileNotFoundException
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        /*        // TODO code application logic here
-        //CARGAR LISTAS DE USUARIOS Y RESTAURANTES
-        LinkedList R = loadRest();
-        //LinkedList U = loadUsers();
+        //declaracion de arboles
+        AVL arbolRestaurants = null, arbolUsers = null;
 
-        //BUSCAR UN RESTAURANTE POR EL NOMBRE
-        String name = "Ultimo dato";
-        Restaurant w = findNameRest(name, R);
-        System.out.println(w.getName() + " igual a: " + name);
-        /*
+        //carga de arboles ordenando datos por su nombre
+        arbolRestaurants = loadRest(arbolRestaurants);
+        //arbolUsers = loadUsers(arbolUsers);
+
+        /*//BUSCAR UN RESTAURANTE POR EL NOMBRE/**/
+        String name = "be";
+        Restaurant restauranteEncontrado = (Restaurant) (findRest(name, arbolRestaurants)).getData();
+        System.out.println(restauranteEncontrado.getName() + " igual a: " + name);
+        /*Eliminar un restaurante/**//*
+        arbolRestaurants.remove(restauranteEncontrado);
+        /**/
+
+
+ /**/
         //ACTUALIZAR Nombre DE RESTAURANTE
-        String NuevoName = "newName";
-        UpdateRest(name, NuevoName, R);
+        String NuevoName = "nuevoNombre";
+        updateRest(name, NuevoName, arbolRestaurants);
+        /**/
+
+ /*
+        //prueba update
+        Restaurant encontrado = findNameRest("t", arbolRestaurants);
+        System.out.println("la busqueda de t encontro' " + encontrado.getName() + " y " + encontrado.getNtables() + " numero de mesas");
+        //updateRest("t", "cambiado", arbolRestaurants);
+
+        encontrado = findNameRest("t", arbolRestaurants);
+        if (null != encontrado) {
+            System.out.println("la busqueda de t encontro' " + encontrado.getName() + " y " + encontrado.getNtables() + " numero de mesas");
+        }
+
+        encontrado = findNameRest("cambiado", arbolRestaurants);
+        if (null != encontrado) {
+            System.out.println("la busqueda de cambiado encontro' " + encontrado.getName() + " y " + encontrado.getNtables() + " numero de mesas");
+        }
+
+        /*
+        //Output de datos en arboles
+        arbolRestaurants.postOrder();
+        arbolRestaurants.inOrder();
          */
-
-        AVL arbol = new AVL();
-        arbol.insert("j");
-        arbol.insert("e");
-        arbol.insert("t");
-        arbol.insert("d");
-        arbol.insert("ee");
-        arbol.insert("ec");
-        arbol.insert("eb");
-        arbol.preOrder();
-
-    }
-    /*
-    static private void UpdateRest(String namebefore, String nameafter, LinkedList A) {
-        Nodo R = findRest(namebefore, A);
-        ((Restaurant) R.getData()).setName(nameafter);
+        arbolRestaurants.preOrder();
+        /*
+        arbolUsers.postOrder();
+        arbolUsers.inOrder();
+        arbolUsers.preOrder();
+         */
     }
 
-    static private Nodo findRest(String name, LinkedList A) {
-        Restaurant R = new Restaurant(name);
-        Nodo T = A.getHead();
+    static private void updateRest(String namebefore, String nameafter, AVL arbolRestaurants) {
+        AVLNode encontrado = findRest(namebefore, arbolRestaurants);
+        Restaurant r = (Restaurant) encontrado.getData();
+        arbolRestaurants.remove(r);
+        r.setName(nameafter);
+        arbolRestaurants.insert(r);
+        System.out.println("Nombre del Restaurante " + namebefore + " cambiado a: " + r.getName());
+    }
+
+    static private AVLNode findUser(String name, AVL arbolUsers) {
         long inicio = System.nanoTime();
-        while (T != null) {
-            if (R.compareTo((Restaurant) T.getData()) == 0) {
-                long fin = System.nanoTime();
-                System.out.println("Tiempo findNameRest(): " + (fin - inicio) * 1.0e-9);
-                return T;
-            }
-            T = T.getNext();
-        }
+
+        User U = new User(name);
+        AVLNode usuarioEncontrado = arbolUsers.search(U);//retorna nodo buscado
         long fin = System.nanoTime();
-        System.out.println("Tiempo findNameRest(): " + (fin - inicio) * 1.0e-9);
-        return null;
+        System.out.println("Tiempo en encontrar un USER: " + (fin - inicio) * 1.0e-9);
+        return usuarioEncontrado;
+
     }
 
-    static private Restaurant findNameRest(String name, LinkedList A) {
-        Restaurant R = new Restaurant(name);
-        Nodo T = A.getHead();
+    static private AVLNode findRest(String name, AVL arbolRestaurants) {
         long inicio = System.nanoTime();
-        while (T != null) {
-            if (R.compareTo((Restaurant) T.getData()) == 0) {
-                long fin = System.nanoTime();
-                System.out.println("Tiempo findNameRest(): " + (fin - inicio) * 1.0e-9);
-                return (Restaurant) T.getData();
-            }
-            T = T.getNext();
-        }
+
+        Restaurant R = new Restaurant(name);
+        AVLNode restauranteEncontrado = arbolRestaurants.search(R);//retorna nodo buscado
         long fin = System.nanoTime();
-        System.out.println("Tiempo findNameRest(): " + (fin - inicio) * 1.0e-9);
-        return null;
+        System.out.println("Tiempo en encontrar un RESTAURANT: " + (fin - inicio) * 1.0e-9);
+        return restauranteEncontrado;
+
     }
 
-    static private LinkedList loadRest() throws IOException {
+    static private AVL loadUsers(AVL arbol) throws IOException {
         FileReader F = null;
         try {
-            F = new FileReader("Restauran3.csv");
+            F = new FileReader("User.csv");
         } catch (FileNotFoundException e) {
             System.out.println("No existe el archivo");
         }
         BufferedReader br = new BufferedReader(F);
-        var lisR = new LinkedList<Restaurant>();
-        String[] R = br.readLine().split(";");
-        long inicio = System.nanoTime();
-        while (R[0] != null) {
-            lisR.pushBack(new Restaurant(R[0], Integer.parseInt(R[1])));
-            try {
-                R = br.readLine().split(";");
-            } catch (IOException r) {
-                R[0] = null;
-            }
-        }
-        long fin = System.nanoTime();
-        System.out.println("Tiempo loadRest(): " + (fin - inicio) * 1.0e-9);
-        return lisR;
-    }
-
-    static private LinkedList loadUsers() throws IOException {
-        FileReader F = null;
-        try {
-            F = new FileReader("User1.csv");
-        } catch (FileNotFoundException e) {
-            System.out.println("No existe el archivo");
-        }
-        BufferedReader br = new BufferedReader(F);
-        var lisU = new LinkedList();
+        arbol = new AVL();
 
         String[] U = br.readLine().split(";");
         long inicio = System.nanoTime();
         while (U[0] != null) {
-            lisU.pushBack(new User(Integer.parseInt(U[0]), Integer.parseInt(U[1]), U[2]));
+            arbol.insert(new User(Integer.parseInt(U[0]), Integer.parseInt(U[1]), U[2]));
             try {
                 U = br.readLine().split(";");
-            } catch (IOException r) {
+            } catch (Exception r) {
                 U[0] = null;
             }
         }
         long fin = System.nanoTime();
         System.out.println("Tiempo loadUsers(): " + (fin - inicio) * 1.0e-9);
-        return lisU;
-    }*/
+        return arbol;
+    }
+
+    static private AVL loadRest(AVL R) throws IOException {
+        FileReader F = null;
+        try {
+            F = new FileReader("Restaurant_1.csv");
+        } catch (FileNotFoundException e) {
+            System.out.println("No existe el archivo");
+        }
+        BufferedReader br = new BufferedReader(F);
+        R = new AVL<Restaurant>();
+        String[] atributosPorRestaurante = br.readLine().split(";");
+        long inicio = System.nanoTime();
+        while (atributosPorRestaurante[0] != null) {
+            R.insert(new Restaurant(atributosPorRestaurante[0], Integer.parseInt(atributosPorRestaurante[1])));
+            try {
+                atributosPorRestaurante = br.readLine().split(";");
+            } catch (Exception r) {
+                atributosPorRestaurante[0] = null;
+            }
+        }
+        long fin = System.nanoTime();
+        System.out.println("Tiempo loadRest(): " + (fin - inicio) * 1.0e-9);
+        return R;
+    }
 }

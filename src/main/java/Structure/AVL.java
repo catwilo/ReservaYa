@@ -5,6 +5,9 @@
  */
 package Structure;
 
+import ReservaYa.Restaurant;
+import ReservaYa.User;
+
 /**
  *
  * @author W1
@@ -44,10 +47,14 @@ public class AVL<T extends Comparable> {
         return rotarRight(node);
     }
 
-    public void reHeight(AVLNode temp) {
+    private void reHeight(AVLNode temp) {
         int aux = 0;
-        temp.setHeight(1 + Math.max((true) ? height(temp.getRight()) : 0, height(temp.getLeft())));
+        if (temp.getData() == null) {
+            temp.setHeight(aux);
+        } else {
+            temp.setHeight(1 + Math.max((true) ? height(temp.getRight()) : 0, height(temp.getLeft())));
 
+        }
     }
 
     private AVLNode leftRightCase(AVLNode nodoDesbalanced) {
@@ -115,15 +122,17 @@ public class AVL<T extends Comparable> {
             temp.setLeft(remove(data, temp.getLeft()));
         } else if (comparacion > 0) {
             temp.setRight(remove(data, temp.getRight()));
-        } else if (temp.getLeft() != null && temp.getRight() != null) {
-            //cuanto compare es 0 entra a este condicional 
-            //pues temp tiene el dato a borrar
-            //le doy el valor de su sucesor a temp para borrar el valor data
-            temp.setData(findMin(temp.getRight()).getData());
-            //y elimino la copia del sucesor que pertenecia al valor borrado
-            temp.setRight(remove((T) temp.getData(), temp.getRight()));
-        } else {
-            temp = (temp.getLeft() != null) ? temp.getLeft() : temp.getRight();
+        } //cuanto compare es 0 entra a este condicional 
+        else {
+            if (temp.getLeft() == null && temp.getRight() == null) {
+                return null;
+            } else {
+                //pues temp tiene el dato a borrar
+                //le doy el valor de su sucesor a temp para borrar el valor data
+                temp.setData(findMin(temp.getRight()).getData());
+                //y elimino la copia del sucesor que pertenecia al valor borrado
+                temp.setRight(remove((T) temp.getData(), temp.getRight()));
+            }
         }
         return temp;
     }
@@ -150,9 +159,10 @@ public class AVL<T extends Comparable> {
 
     private AVLNode search(T data, AVLNode temp) {
         while (temp != null) {
-            if (data.compareTo(temp.getData()) > 0) {
+            int t = data.compareTo(temp.getData());
+            if (t > 0) {
                 temp = temp.getRight();
-            } else if (data.compareTo(temp.getData()) < 0) {
+            } else if (t < 0) {
                 temp = temp.getLeft();
             } else {
                 break;
@@ -165,14 +175,26 @@ public class AVL<T extends Comparable> {
     private void inOrder(AVLNode temp) {
         if (temp != null) {
             inOrder(temp.getLeft());
-            System.out.print(temp.getData() + " - ");
+            if (temp.getData() instanceof Restaurant restaurant) {
+                System.out.print(restaurant.getName() + " -   ");
+            } else if (temp.getData() instanceof User user) {
+                System.out.print(user.getName() + " - ");
+            } else {
+                System.out.println(temp.getData() + " - ");
+            }
             inOrder(temp.getRight());
         }
     }
 
     private void preOrder(AVLNode temp) {
         if (temp != null) {
-            System.out.print(temp.getData() + " - ");
+            if (temp.getData() instanceof Restaurant restaurant) {
+                System.out.print(restaurant.getName() + " -   ");
+            } else if (temp.getData() instanceof User user) {
+                System.out.print(user.getName() + " - ");
+            } else {
+                System.out.println(temp.getData() + " - ");
+            }
             preOrder(temp.getLeft());
             preOrder(temp.getRight());
         }
@@ -182,7 +204,13 @@ public class AVL<T extends Comparable> {
         if (temp != null) {
             postOrder(temp.getLeft());
             postOrder(temp.getRight());
-            System.out.print(temp.getData() + " - ");
+            if (temp.getData() instanceof Restaurant restaurant) {
+                System.out.print(restaurant.getName() + " -   ");
+            } else if (temp.getData() instanceof User user) {
+                System.out.print(user.getName() + " - ");
+            } else {
+                System.out.println(temp.getData() + " - ");
+            }
         }
     }
 
@@ -243,14 +271,17 @@ public class AVL<T extends Comparable> {
 
     public void inOrder() {
         inOrder(this.root);
+        System.out.println("");
     }
 
     public void preOrder() {
         preOrder(this.root);
+        System.out.println("");
     }
 
     public void postOrder() {
         postOrder(this.root);
+        System.out.println("");
     }
 
     public AVLNode getRoot() {
