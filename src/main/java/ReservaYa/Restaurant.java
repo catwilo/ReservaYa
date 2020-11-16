@@ -14,11 +14,11 @@ import java.time.LocalDate;
  */
 public class Restaurant extends Object implements Comparable {
 
-    String Description, name;
-    LocalDate open, close;
-    int Ntables;
-    boolean[] table;
-    LinkedQueue Qu;
+    private String Description, name;
+    private LocalDate open, close;
+    private int Ntables;
+    private boolean[] table;
+    private LinkedQueue Qu;
 
     public Restaurant() {
         name = null;

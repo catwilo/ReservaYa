@@ -28,54 +28,67 @@ public class ReservaYa {
         String NuevoName = "newName";
         UpdateRest(name, NuevoName, R);
          */
-        
+
         //declaracion de arboles
         AVL arbolRestaurants = null, arbolUsers = null;
-        
+
         //carga de arboles ordenando datos por su nombre
         arbolRestaurants = loadRest(arbolRestaurants);
-        arbolUsers = loadUsers(arbolUsers);
-        
+        //arbolUsers = loadUsers(arbolUsers);
+
+        /*
+        //prueba update
+        Restaurant encontrado = findNameRest("t", arbolRestaurants);
+        System.out.println("la busqueda de t encontro' " + encontrado.getName() + " y " + encontrado.getNtables() + " numero de mesas");
+        //updateRest("t", "cambiado", arbolRestaurants);
+
+        encontrado = findNameRest("t", arbolRestaurants);
+        if (null != encontrado) {
+            System.out.println("la busqueda de t encontro' " + encontrado.getName() + " y " + encontrado.getNtables() + " numero de mesas");
+        }
+
+        encontrado = findNameRest("cambiado", arbolRestaurants);
+        if (null != encontrado) {
+            System.out.println("la busqueda de cambiado encontro' " + encontrado.getName() + " y " + encontrado.getNtables() + " numero de mesas");
+        }
+
+        /*
         //Output de datos en arboles
         arbolRestaurants.postOrder();
+        arbolRestaurants.inOrder();
+         */
+        arbolRestaurants.preOrder();
+        /*
+        arbolUsers.postOrder();
+        arbolUsers.inOrder();
         arbolUsers.preOrder();
-
+         */
     }
 
-    static private void UpdateRest(String namebefore, String nameafter, LinkedList A) {
-        Nodo R = findRest(namebefore, A);
+    static private void updateRest(String namebefore, String nameafter, AVL A) {
+        AVLNode R = findRest(namebefore, A);
         ((Restaurant) R.getData()).setName(nameafter);
+
     }
 
-    static private Nodo findRest(String name, LinkedList A) {
-        Restaurant R = new Restaurant(name);
-        Nodo T = A.getHead();
+    static private AVLNode findRest(String name, AVL arbolRestaurants) {
         long inicio = System.nanoTime();
-        while (T != null) {
-            if (R.compareTo((Restaurant) T.getData()) == 0) {
-                long fin = System.nanoTime();
-                System.out.println("Tiempo findNameRest(): " + (fin - inicio) * 1.0e-9);
-                return T;
-            }
-            T = T.getNext();
-        }
+
+        Restaurant R = new Restaurant(name);
+        AVLNode aux = arbolRestaurants.search(R);//retorna nodo buscado
         long fin = System.nanoTime();
         System.out.println("Tiempo findNameRest(): " + (fin - inicio) * 1.0e-9);
-        return null;
+        return aux;
+
     }
 
-    static private Restaurant findNameRest(String name, LinkedList A) {
-        Restaurant R = new Restaurant(name);
-        Nodo T = A.getHead();
+    static private Restaurant findNameRest(String name, AVL arbolRestaurants) {
         long inicio = System.nanoTime();
-        while (T != null) {
-            if (R.compareTo((Restaurant) T.getData()) == 0) {
-                long fin = System.nanoTime();
-                System.out.println("Tiempo findNameRest(): " + (fin - inicio) * 1.0e-9);
-                return (Restaurant) T.getData();
-            }
-            T = T.getNext();
+        AVLNode restauranteEncontrado = findRest(name, arbolRestaurants);
+        if (restauranteEncontrado != null) {
+            return (Restaurant) restauranteEncontrado.getData();
         }
+
         long fin = System.nanoTime();
         System.out.println("Tiempo findNameRest(): " + (fin - inicio) * 1.0e-9);
         return null;

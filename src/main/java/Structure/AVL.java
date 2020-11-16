@@ -118,15 +118,13 @@ public class AVL<T extends Comparable> {
             temp.setLeft(remove(data, temp.getLeft()));
         } else if (comparacion > 0) {
             temp.setRight(remove(data, temp.getRight()));
-        } else if (temp.getLeft() != null && temp.getRight() != null) {
-            //cuanto compare es 0 entra a este condicional 
+        } //cuanto compare es 0 entra a este condicional 
+        else {
             //pues temp tiene el dato a borrar
             //le doy el valor de su sucesor a temp para borrar el valor data
             temp.setData(findMin(temp.getRight()).getData());
             //y elimino la copia del sucesor que pertenecia al valor borrado
             temp.setRight(remove((T) temp.getData(), temp.getRight()));
-        } else {
-            temp = (temp.getLeft() != null) ? temp.getLeft() : temp.getRight();
         }
         return temp;
     }
