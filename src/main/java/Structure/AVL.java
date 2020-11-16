@@ -124,7 +124,7 @@ public class AVL<T extends Comparable> {
             temp.setRight(remove(data, temp.getRight()));
         } //cuanto compare es 0 entra a este condicional 
         else {
-            if (temp.getLeft() != null && temp.getRight() != null) {
+            if (temp.getLeft() == null && temp.getRight() == null) {
                 return null;
             } else {
                 //pues temp tiene el dato a borrar

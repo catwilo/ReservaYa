@@ -19,16 +19,6 @@ public class ReservaYa {
      * @throws java.io.FileNotFoundException
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        /*//BUSCAR UN RESTAURANTE POR EL NOMBRE
-        String name = "Ultimo dato";
-        Restaurant w = findNameRest(name, R);
-        System.out.println(w.getName() + " igual a: " + name);
-        /*
-        //ACTUALIZAR Nombre DE RESTAURANTE
-        String NuevoName = "newName";
-        UpdateRest(name, NuevoName, R);
-         */
-
         //declaracion de arboles
         AVL arbolRestaurants = null, arbolUsers = null;
 
@@ -36,7 +26,22 @@ public class ReservaYa {
         arbolRestaurants = loadRest(arbolRestaurants);
         //arbolUsers = loadUsers(arbolUsers);
 
-        /*
+        /*//BUSCAR UN RESTAURANTE POR EL NOMBRE/**/
+        String name = "be";
+        Restaurant restauranteEncontrado = findNameRest(name, arbolRestaurants);
+        System.out.println(restauranteEncontrado.getName() + " igual a: " + name);
+        /*Eliminar un restaurante/**//*
+        arbolRestaurants.remove(restauranteEncontrado);
+        /**/
+
+
+ /**/
+        //ACTUALIZAR Nombre DE RESTAURANTE
+        String NuevoName = "ae";
+        updateRest(name, NuevoName, arbolRestaurants);
+        /**/
+
+ /*
         //prueba update
         Restaurant encontrado = findNameRest("t", arbolRestaurants);
         System.out.println("la busqueda de t encontro' " + encontrado.getName() + " y " + encontrado.getNtables() + " numero de mesas");
@@ -65,13 +70,13 @@ public class ReservaYa {
          */
     }
 
-    static private void updateRest(String namebefore, String nameafter, AVL A) {
-        AVLNode R = findRest(namebefore, A);
-        Restaurant r = (Restaurant) R.getData();
+    static private void updateRest(String namebefore, String nameafter, AVL arbolRestaurants) {
+        AVLNode encontrado = findRest(namebefore, arbolRestaurants);
+        Restaurant r = (Restaurant) encontrado.getData();
+        arbolRestaurants.remove(r);
         r.setName(nameafter);
-        A.remove(r);
-        A.insert(r);
-
+        arbolRestaurants.insert(r);
+        System.out.println("Nombre del Restaurante " + namebefore + " cambiado a: " + r.getName());
     }
 
     static private AVLNode findRest(String name, AVL arbolRestaurants) {
@@ -125,7 +130,7 @@ public class ReservaYa {
     static private AVL loadRest(AVL R) throws IOException {
         FileReader F = null;
         try {
-            F = new FileReader("Restaurant.csv");
+            F = new FileReader("Restaurant_1.csv");
         } catch (FileNotFoundException e) {
             System.out.println("No existe el archivo");
         }
