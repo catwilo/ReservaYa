@@ -13,7 +13,7 @@ package Structure;
 public class AVLNode<T extends Comparable> {
 
     private int height;
-    T data;
+    private T data;
     private AVLNode right;
     private AVLNode left;
 

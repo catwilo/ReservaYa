@@ -168,7 +168,13 @@ public class AVL<T extends Comparable> {
     private void inOrder(AVLNode temp) {
         if (temp != null) {
             inOrder(temp.getLeft());
-            System.out.print(temp.getData() + " - ");
+            if (temp.getData() instanceof Restaurant restaurant) {
+                System.out.print(restaurant.getName() + " -   ");
+            } else if (temp.getData() instanceof User user) {
+                System.out.print(user.getName() + " - ");
+            } else {
+                System.out.println(temp.getData() + " - ");
+            }
             inOrder(temp.getRight());
         }
     }
@@ -176,9 +182,11 @@ public class AVL<T extends Comparable> {
     private void preOrder(AVLNode temp) {
         if (temp != null) {
             if (temp.getData() instanceof Restaurant restaurant) {
-                System.out.print(restaurant.getName()+" - ");
+                System.out.print(restaurant.getName() + " -   ");
             } else if (temp.getData() instanceof User user) {
                 System.out.print(user.getName() + " - ");
+            } else {
+                System.out.println(temp.getData() + " - ");
             }
             preOrder(temp.getLeft());
             preOrder(temp.getRight());
@@ -189,7 +197,13 @@ public class AVL<T extends Comparable> {
         if (temp != null) {
             postOrder(temp.getLeft());
             postOrder(temp.getRight());
-            System.out.print(temp.getData() + " - ");
+            if (temp.getData() instanceof Restaurant restaurant) {
+                System.out.print(restaurant.getName() + " -   ");
+            } else if (temp.getData() instanceof User user) {
+                System.out.print(user.getName() + " - ");
+            } else {
+                System.out.println(temp.getData() + " - ");
+            }
         }
     }
 
