@@ -8,8 +8,9 @@ package Structure;
 /**
  *
  * @author causugamo
+ * @param <T>
  */
-public interface Queue<T> {
+public interface Queue<T extends Comparable> {
 
     boolean isEmpty();
 

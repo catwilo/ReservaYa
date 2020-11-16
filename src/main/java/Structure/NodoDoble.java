@@ -9,8 +9,9 @@ package Structure;
 /**
  *
  * @author causugamo
+ * @param <T>
  */
-public class NodoDoble <T> {
+public class NodoDoble <T extends Comparable> {
 
     T key;
     NodoDoble next;

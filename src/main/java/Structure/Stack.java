@@ -8,8 +8,9 @@ package Structure;
 /**
  *
  * @author causugamo
+ * @param <T>
  */
-public interface Stack <T>{
+public interface Stack <T extends Comparable>{
     boolean isEmpty ();
     T peek ();
     void push ( T theObject );
