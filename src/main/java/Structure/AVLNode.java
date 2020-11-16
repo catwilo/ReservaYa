@@ -64,9 +64,4 @@ public class AVLNode<T extends Comparable> {
     public void setData(T data) {
         this.data = data;
     }
-
-    static private AVLNode loadRest() {
-        return null;
-    }
-
 }

@@ -47,10 +47,14 @@ public class AVL<T extends Comparable> {
         return rotarRight(node);
     }
 
-    public void reHeight(AVLNode temp) {
+    private void reHeight(AVLNode temp) {
         int aux = 0;
-        temp.setHeight(1 + Math.max((true) ? height(temp.getRight()) : 0, height(temp.getLeft())));
+        if (temp.getData() == null) {
+            temp.setHeight(aux);
+        } else {
+            temp.setHeight(1 + Math.max((true) ? height(temp.getRight()) : 0, height(temp.getLeft())));
 
+        }
     }
 
     private AVLNode leftRightCase(AVLNode nodoDesbalanced) {
@@ -120,11 +124,15 @@ public class AVL<T extends Comparable> {
             temp.setRight(remove(data, temp.getRight()));
         } //cuanto compare es 0 entra a este condicional 
         else {
-            //pues temp tiene el dato a borrar
-            //le doy el valor de su sucesor a temp para borrar el valor data
-            temp.setData(findMin(temp.getRight()).getData());
-            //y elimino la copia del sucesor que pertenecia al valor borrado
-            temp.setRight(remove((T) temp.getData(), temp.getRight()));
+            if (temp.getLeft() != null && temp.getRight() != null) {
+                return null;
+            } else {
+                //pues temp tiene el dato a borrar
+                //le doy el valor de su sucesor a temp para borrar el valor data
+                temp.setData(findMin(temp.getRight()).getData());
+                //y elimino la copia del sucesor que pertenecia al valor borrado
+                temp.setRight(remove((T) temp.getData(), temp.getRight()));
+            }
         }
         return temp;
     }
