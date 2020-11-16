@@ -45,7 +45,8 @@ public class ReservaYa {
         arbol.insert("ec");
         arbol.insert("eb");
          */
-        loadRest(arbol);
+        arbol = loadRest(arbol);
+        
         arbol.preOrder();
 
     }

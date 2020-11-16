@@ -5,6 +5,8 @@
  */
 package Structure;
 
+import ReservaYa.Restaurant;
+
 /**
  *
  * @author W1
@@ -172,7 +174,9 @@ public class AVL<T extends Comparable> {
 
     private void preOrder(AVLNode temp) {
         if (temp != null) {
-            System.out.print(temp.getData() + " - ");
+            if (temp.getData() instanceof Restaurant restaurant) {
+                System.out.print(" - " + restaurant.getName());
+            }
             preOrder(temp.getLeft());
             preOrder(temp.getRight());
         }
