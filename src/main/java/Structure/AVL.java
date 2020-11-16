@@ -6,6 +6,7 @@
 package Structure;
 
 import ReservaYa.Restaurant;
+import ReservaYa.User;
 
 /**
  *
@@ -175,7 +176,9 @@ public class AVL<T extends Comparable> {
     private void preOrder(AVLNode temp) {
         if (temp != null) {
             if (temp.getData() instanceof Restaurant restaurant) {
-                System.out.print(" - " + restaurant.getName());
+                System.out.print(restaurant.getName()+" - ");
+            } else if (temp.getData() instanceof User user) {
+                System.out.print(user.getName() + " - ");
             }
             preOrder(temp.getLeft());
             preOrder(temp.getRight());
@@ -247,14 +250,17 @@ public class AVL<T extends Comparable> {
 
     public void inOrder() {
         inOrder(this.root);
+        System.out.println("");
     }
 
     public void preOrder() {
         preOrder(this.root);
+        System.out.println("");
     }
 
     public void postOrder() {
         postOrder(this.root);
+        System.out.println("");
     }
 
     public AVLNode getRoot() {

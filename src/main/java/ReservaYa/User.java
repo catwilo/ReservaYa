@@ -9,7 +9,7 @@ package ReservaYa;
  *
  * @author W1
  */
-public class User implements Comparable{
+public class User implements Comparable {
 
     int id, age;
     String name, email;
@@ -20,8 +20,51 @@ public class User implements Comparable{
         this.name = name;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+
     @Override
     public int compareTo(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return compareTo((User) o);
+    }
+
+    private int compareTo(User u) {
+        if (this.name.compareTo(u.getName()) < 0) {
+            return -1;
+        } else if (this.name.compareTo(u.getName()) > 0) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
