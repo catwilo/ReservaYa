@@ -41,10 +41,11 @@ public class ReservaYa {
         arbol.insert(40);
         arbol.insert(55);
         arbol.insert(53);
+        arbol.insert(52);
         arbol.preOrder();
 
     }
-/*
+    /*
     static private void UpdateRest(String namebefore, String nameafter, LinkedList A) {
         Nodo R = findRest(namebefore, A);
         ((Restaurant) R.getData()).setName(nameafter);

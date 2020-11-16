@@ -19,7 +19,7 @@ public class AVLNode<T extends Comparable> {
 
     public AVLNode() {
         this.data = null;
-        this.height = 0;
+        this.height = 1;
         this.right = null;
         this.left = null;
 
@@ -27,15 +27,13 @@ public class AVLNode<T extends Comparable> {
 
     public AVLNode(T data) {
         this.data = data;
-        this.height = 0;
+        this.height = 1;
         this.right = null;
         this.left = null;
 
     }
 
-    public void reHeight() {
-        this.height = 1 + Math.max(this.right.getHeight(), this.left.getHeight());
-    }
+
 
     public int getHeight() {
         return height;

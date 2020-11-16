@@ -19,15 +19,15 @@ public class AVL<T extends Comparable> {
     }
 
     private int height(AVLNode temp) {
-        return (temp == null) ? -1 : temp.getHeight();
+        return (temp != null) ? temp.getHeight() : 0;
     }
 
     private AVLNode rotarLeft(AVLNode nodoDesbalanced) {
         AVLNode nodoASubir = nodoDesbalanced.getRight();
         nodoDesbalanced.setRight(nodoASubir.getLeft());
         nodoASubir.setLeft(nodoDesbalanced);
-        nodoDesbalanced.reHeight();//re calculo sus alturas
-        nodoASubir.reHeight();
+        reHeight(nodoDesbalanced);//re calculo sus alturas
+        reHeight(nodoASubir);
         return nodoASubir;
     }
 
@@ -35,13 +35,19 @@ public class AVL<T extends Comparable> {
         AVLNode nodoASubir = nodoDesbalanced.getLeft();
         nodoDesbalanced.setLeft(nodoASubir.getRight());
         nodoASubir.setRight(nodoDesbalanced);
-        nodoDesbalanced.reHeight();//re calculo sus alturas
-        nodoASubir.reHeight();
+        reHeight(nodoDesbalanced);//re calculo sus alturas
+        reHeight(nodoASubir);
         return nodoASubir;
     }
 
     private AVLNode leftLeftCase(AVLNode node) {
         return rotarRight(node);
+    }
+
+    public void reHeight(AVLNode temp) {
+        int aux = 0;
+        temp.setHeight(1 + Math.max((true) ? height(temp.getRight()) : 0, height(temp.getLeft())));
+
     }
 
     private AVLNode leftRightCase(AVLNode nodoDesbalanced) {
@@ -64,6 +70,7 @@ public class AVL<T extends Comparable> {
             temp.setData(data);
         } else if (data.compareTo(temp.getData()) > 0) {
             temp.setRight(insert(data, temp.getRight()));
+            reHeight(temp);
             if (height(temp.getRight()) - height(temp.getLeft()) == 2) {
                 if (data.compareTo(temp.getRight().getData()) > 0) {
                     temp = rightRightCase(temp);
@@ -73,6 +80,7 @@ public class AVL<T extends Comparable> {
             }
         } else if (data.compareTo(temp.getData()) < 0) {
             temp.setLeft(insert(data, temp.getLeft()));
+            reHeight(temp);
             if (height(temp.getLeft()) - height(temp.getRight()) == 2) {
                 if (data.compareTo(temp.getLeft().getData()) < 0) {
                     temp = leftLeftCase(temp);
