@@ -35,13 +35,13 @@ public class ReservaYa {
          */
 
         AVL arbol = new AVL();
-        arbol.insert(100);
-        arbol.insert(50);
-        arbol.insert(200);
-        arbol.insert(40);
-        arbol.insert(55);
-        arbol.insert(53);
-        arbol.insert(52);
+        arbol.insert("j");
+        arbol.insert("e");
+        arbol.insert("t");
+        arbol.insert("d");
+        arbol.insert("ee");
+        arbol.insert("ec");
+        arbol.insert("eb");
         arbol.preOrder();
 
     }
