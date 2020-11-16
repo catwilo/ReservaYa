@@ -19,9 +19,10 @@ public class ReservaYa {
      * @throws java.io.FileNotFoundException
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        /*        // TODO code application logic here
+        /*// TODO code application logic here
         //CARGAR LISTAS DE USUARIOS Y RESTAURANTES
-        LinkedList R = loadRest();
+        LinkedList R = new LinkedList();
+        loadRest(R);
         //LinkedList U = loadUsers();
 
         //BUSCAR UN RESTAURANTE POR EL NOMBRE
@@ -33,8 +34,9 @@ public class ReservaYa {
         String NuevoName = "newName";
         UpdateRest(name, NuevoName, R);
          */
-
+        
         AVL arbol = new AVL();
+        /*
         arbol.insert("j");
         arbol.insert("e");
         arbol.insert("t");
@@ -42,10 +44,12 @@ public class ReservaYa {
         arbol.insert("ee");
         arbol.insert("ec");
         arbol.insert("eb");
+         */
+        loadRest(arbol);
         arbol.preOrder();
 
     }
-    /*
+
     static private void UpdateRest(String namebefore, String nameafter, LinkedList A) {
         Nodo R = findRest(namebefore, A);
         ((Restaurant) R.getData()).setName(nameafter);
@@ -85,7 +89,7 @@ public class ReservaYa {
         return null;
     }
 
-    static private LinkedList loadRest() throws IOException {
+    static private LinkedList loadRest(LinkedList R) throws IOException {
         FileReader F = null;
         try {
             F = new FileReader("Restauran3.csv");
@@ -93,20 +97,20 @@ public class ReservaYa {
             System.out.println("No existe el archivo");
         }
         BufferedReader br = new BufferedReader(F);
-        var lisR = new LinkedList<Restaurant>();
-        String[] R = br.readLine().split(";");
+        R = new LinkedList<Restaurant>();
+        String[] atributosPorRestaurante = br.readLine().split(";");
         long inicio = System.nanoTime();
-        while (R[0] != null) {
-            lisR.pushBack(new Restaurant(R[0], Integer.parseInt(R[1])));
+        while (atributosPorRestaurante[0] != null) {
+            R.pushBack(new Restaurant(atributosPorRestaurante[0], Integer.parseInt(atributosPorRestaurante[1])));
             try {
-                R = br.readLine().split(";");
+                atributosPorRestaurante = br.readLine().split(";");
             } catch (IOException r) {
-                R[0] = null;
+                atributosPorRestaurante[0] = null;
             }
         }
         long fin = System.nanoTime();
         System.out.println("Tiempo loadRest(): " + (fin - inicio) * 1.0e-9);
-        return lisR;
+        return R;
     }
 
     static private LinkedList loadUsers() throws IOException {
@@ -132,5 +136,29 @@ public class ReservaYa {
         long fin = System.nanoTime();
         System.out.println("Tiempo loadUsers(): " + (fin - inicio) * 1.0e-9);
         return lisU;
-    }*/
+    }
+
+    static private AVL loadRest(AVL R) throws IOException {
+        FileReader F = null;
+        try {
+            F = new FileReader("Restaurant.csv");
+        } catch (FileNotFoundException e) {
+            System.out.println("No existe el archivo");
+        }
+        BufferedReader br = new BufferedReader(F);
+        R = new AVL<Restaurant>();
+        String[] atributosPorRestaurante = br.readLine().split(";");
+        long inicio = System.nanoTime();
+        while (atributosPorRestaurante[0] != null) {
+            R.insert(new Restaurant(atributosPorRestaurante[0], Integer.parseInt(atributosPorRestaurante[1])));
+            try {
+                atributosPorRestaurante = br.readLine().split(";");
+            } catch (Exception r) {
+                atributosPorRestaurante[0] = null;
+            }
+        }
+        long fin = System.nanoTime();
+        System.out.println("Tiempo loadRest(): " + (fin - inicio) * 1.0e-9);
+        return R;
+    }
 }
