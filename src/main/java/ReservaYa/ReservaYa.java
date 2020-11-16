@@ -29,12 +29,16 @@ public class ReservaYa {
         UpdateRest(name, NuevoName, R);
          */
         
+        //declaracion de arboles
         AVL arbolRestaurants = null, arbolUsers = null;
-        arbolRestaurants = loadRest(arbolRestaurants);
-        arbolRestaurants.preOrder();
-        arbolUsers = loadUsers(arbolUsers);
-        arbolUsers.preOrder();
         
+        //carga de arboles ordenando datos por su nombre
+        arbolRestaurants = loadRest(arbolRestaurants);
+        arbolUsers = loadUsers(arbolUsers);
+        
+        //Output de datos en arboles
+        arbolRestaurants.postOrder();
+        arbolUsers.preOrder();
 
     }
 
