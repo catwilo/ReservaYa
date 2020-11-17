@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ReservaYa.interfaz;
+package interfaz;
 import java.awt.Desktop;
 import java.net.URI;
 
@@ -11,13 +11,13 @@ import java.net.URI;
  *
  * @author santi
  */
-public class McD extends javax.swing.JFrame {
+public class kfc extends javax.swing.JFrame {
     int b=100;
     String a= b+"";
     /**
      * Creates new form kfc
      */
-    public McD() {
+    public kfc() {
         initComponents();
     }
     
@@ -31,43 +31,43 @@ public class McD extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        name_mcd = new javax.swing.JLabel();
-        mesa_mcd = new javax.swing.JLabel();
-        menu_mcd = new javax.swing.JButton();
-        reservar_mcd = new javax.swing.JButton();
-        numero_mcd = new javax.swing.JLabel();
-        volver_mcd = new javax.swing.JButton();
+        name_kfc = new javax.swing.JLabel();
+        mesa_kfc = new javax.swing.JLabel();
+        menu_fkc = new javax.swing.JButton();
+        reservar_kfc = new javax.swing.JButton();
+        numero_kfc = new javax.swing.JLabel();
+        volver_kfc = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        name_mcd.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
-        name_mcd.setText("McDonals's");
+        name_kfc.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
+        name_kfc.setText("KFC");
 
-        mesa_mcd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        mesa_mcd.setText("Mesas Disponibles");
+        mesa_kfc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        mesa_kfc.setText("Mesas Disponibles");
 
-        menu_mcd.setText("Descargar menu");
-        menu_mcd.addActionListener(new java.awt.event.ActionListener() {
+        menu_fkc.setText("Descargar menu");
+        menu_fkc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menu_mcdActionPerformed(evt);
+                menu_fkcActionPerformed(evt);
             }
         });
 
-        reservar_mcd.setText("Reservar");
-        reservar_mcd.addActionListener(new java.awt.event.ActionListener() {
+        reservar_kfc.setText("Reservar");
+        reservar_kfc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reservar_mcdActionPerformed(evt);
+                reservar_kfcActionPerformed(evt);
             }
         });
 
-        numero_mcd.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        numero_mcd.setForeground(new java.awt.Color(255, 0, 0));
-        numero_mcd.setText(a);
+        numero_kfc.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        numero_kfc.setForeground(new java.awt.Color(255, 0, 0));
+        numero_kfc.setText(a);
 
-        volver_mcd.setText("volver");
-        volver_mcd.addActionListener(new java.awt.event.ActionListener() {
+        volver_kfc.setText("volver");
+        volver_kfc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                volver_mcdActionPerformed(evt);
+                volver_kfcActionPerformed(evt);
             }
         });
 
@@ -78,21 +78,21 @@ public class McD extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(119, 119, 119)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(menu_mcd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(reservar_mcd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(mesa_mcd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(menu_fkc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(reservar_kfc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mesa_kfc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(120, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(volver_mcd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(name_mcd, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(volver_kfc)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(name_kfc, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(144, 144, 144))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(numero_mcd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(numero_kfc, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(122, 122, 122))))
         );
         layout.setVerticalGroup(
@@ -100,37 +100,37 @@ public class McD extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(name_mcd, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(volver_mcd, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(name_kfc, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(volver_kfc, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
-                .addComponent(mesa_mcd, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mesa_kfc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(numero_mcd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(numero_kfc, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(153, 153, 153)
-                .addComponent(menu_mcd)
+                .addComponent(menu_fkc)
                 .addGap(63, 63, 63)
-                .addComponent(reservar_mcd)
+                .addComponent(reservar_kfc)
                 .addContainerGap(178, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menu_mcdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_mcdActionPerformed
-        this.abrirEnlaces("https://www.mcdonalds.com.co/menu");
-    }//GEN-LAST:event_menu_mcdActionPerformed
+    private void menu_fkcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_fkcActionPerformed
+        this.abrirEnlaces("https://www.kentucky.com.do/menu/nuestro-menu");
+    }//GEN-LAST:event_menu_fkcActionPerformed
 
-    private void reservar_mcdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservar_mcdActionPerformed
+    private void reservar_kfcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservar_kfcActionPerformed
         b-=1;
         a=b+"";
-        numero_mcd.setText(a);
-    }//GEN-LAST:event_reservar_mcdActionPerformed
+        numero_kfc.setText(a);
+    }//GEN-LAST:event_reservar_kfcActionPerformed
 
-    private void volver_mcdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volver_mcdActionPerformed
+    private void volver_kfcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volver_kfcActionPerformed
         menu c = new menu();
         c.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_volver_mcdActionPerformed
+    }//GEN-LAST:event_volver_kfcActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,21 +149,20 @@ public class McD extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(McD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(kfc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(McD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(kfc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(McD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(kfc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(McD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(kfc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new McD().setVisible(true);
+                new kfc().setVisible(true);
             }
         });
     }
@@ -175,11 +174,11 @@ public class McD extends javax.swing.JFrame {
         }
     }    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton menu_mcd;
-    private javax.swing.JLabel mesa_mcd;
-    private javax.swing.JLabel name_mcd;
-    private javax.swing.JLabel numero_mcd;
-    private javax.swing.JButton reservar_mcd;
-    private javax.swing.JButton volver_mcd;
+    private javax.swing.JButton menu_fkc;
+    private javax.swing.JLabel mesa_kfc;
+    private javax.swing.JLabel name_kfc;
+    private javax.swing.JLabel numero_kfc;
+    private javax.swing.JButton reservar_kfc;
+    private javax.swing.JButton volver_kfc;
     // End of variables declaration//GEN-END:variables
 }
