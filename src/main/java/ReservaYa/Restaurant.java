@@ -16,7 +16,7 @@ public class Restaurant extends Object implements Comparable {
 
     private String Description, name;
     private LocalDate open, close;
-    private int Ntables;
+    private int mesasDisponibles;
     private boolean[] table;
     private LinkedQueue Qu;
 
@@ -32,7 +32,7 @@ public class Restaurant extends Object implements Comparable {
 
     public Restaurant(String name, int Ntables) {
         this.name = name;
-        this.Ntables = Ntables;
+        this.mesasDisponibles = Ntables;
         this.table = new boolean[Ntables];
     }
 
@@ -41,7 +41,7 @@ public class Restaurant extends Object implements Comparable {
     }
 
     public void setNtables(int Ntables) {
-        this.Ntables = Ntables;
+        this.mesasDisponibles = Ntables;
     }
 
     public String getName() {
@@ -49,7 +49,7 @@ public class Restaurant extends Object implements Comparable {
     }
 
     public int getNtables() {
-        return Ntables;
+        return mesasDisponibles;
     }
 
     public void EncolarUser(User u) {
