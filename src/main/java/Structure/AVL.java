@@ -175,11 +175,11 @@ public class AVL<T extends Comparable> {
     private void inOrder(AVLNode temp) {
         if (temp != null) {
             inOrder(temp.getLeft());
-            if (temp.getData() instanceof Restaurant restaurant) {
-                System.out.print(restaurant.getName() + " -   ");
-            } else if (temp.getData() instanceof User user) {
-                System.out.print(user.getName() + " - ");
-            } else {
+            if(temp.getData() instanceof Restaurant) {
+                System.out.print(((Restaurant)temp.getData()).getName() + " -   ");
+            }else if (temp.getData() instanceof User) {
+                System.out.print(((User)temp.getData()).getName() + " - ");
+            }else{
                 System.out.println(temp.getData() + " - ");
             }
             inOrder(temp.getRight());
@@ -188,11 +188,11 @@ public class AVL<T extends Comparable> {
 
     private void preOrder(AVLNode temp) {
         if (temp != null) {
-            if (temp.getData() instanceof Restaurant restaurant) {
-                System.out.print(restaurant.getName() + " -   ");
-            } else if (temp.getData() instanceof User user) {
-                System.out.print(user.getName() + " - ");
-            } else {
+            if (temp.getData() instanceof Restaurant){
+                System.out.print(((Restaurant)temp.getData()).getName() + " -   ");
+            }else if (temp.getData() instanceof User) {
+                System.out.print(((User)temp.getData()).getName() + " - ");
+            }else {
                 System.out.println(temp.getData() + " - ");
             }
             preOrder(temp.getLeft());
@@ -204,11 +204,11 @@ public class AVL<T extends Comparable> {
         if (temp != null) {
             postOrder(temp.getLeft());
             postOrder(temp.getRight());
-            if (temp.getData() instanceof Restaurant restaurant) {
-                System.out.print(restaurant.getName() + " -   ");
-            } else if (temp.getData() instanceof User user) {
-                System.out.print(user.getName() + " - ");
-            } else {
+            if(temp.getData() instanceof Restaurant){
+                System.out.print(((Restaurant)temp.getData()).getName() + " -   ");
+            } else if (temp.getData() instanceof User) {
+                System.out.print(((User)temp.getData()).getName() + " - ");
+            }else{
                 System.out.println(temp.getData() + " - ");
             }
         }
