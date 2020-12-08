@@ -23,45 +23,47 @@ public class ReservaYa {
         AVL arbolRestaurants = null, arbolUsers = null;
 
         //carga de arboles ordenando datos por su nombre
-        arbolRestaurants = loadRest(arbolRestaurants);
-        //arbolUsers = loadUsers(arbolUsers);
+        //arbolRestaurants = loadRest(arbolRestaurants);
+        arbolUsers = loadUsers(arbolUsers);
+        
+        
+        
 
         /*//BUSCAR UN RESTAURANTE POR EL NOMBRE/**/
-        String name = "be";
+        String name = "Amet Inc.";        
         Restaurant restauranteEncontrado = (Restaurant) (findRest(name, arbolRestaurants)).getData();
         System.out.println(restauranteEncontrado.getName() + " igual a: " + name);
-        /*Eliminar un restaurante/**//*
+        
+        /*//BUSCAR UN USUARIO POR EL NOMBRE/**/
+        
+        String usuario = "Xyla Burgess";        
+        User usuarioEncontrado = (User) (findUser(usuario, arbolUsers)).getData();
+        System.out.println(usuarioEncontrado.getName() + " igual a: " + usuario);
+        
+        /*Actualizar un restaurante/**/
+        String newRestaurant = "BK";
+        updateRest(name,newRestaurant, arbolRestaurants);
+        /**/
+        
+        
+        /*Eliminar un restaurante/**/
         arbolRestaurants.remove(restauranteEncontrado);
         /**/
+        
+        
 
 
  /**/
         //ACTUALIZAR Nombre DE RESTAURANTE
-        String NuevoName = "nuevoNombre";
-        updateRest(name, NuevoName, arbolRestaurants);
+        //String NuevoName = "nuevoNombre";
+        //updateRest(name, NuevoName, arbolRestaurants);
         /**/
-
- /*
-        //prueba update
-        Restaurant encontrado = findNameRest("t", arbolRestaurants);
-        System.out.println("la busqueda de t encontro' " + encontrado.getName() + " y " + encontrado.getNtables() + " numero de mesas");
-        //updateRest("t", "cambiado", arbolRestaurants);
-
-        encontrado = findNameRest("t", arbolRestaurants);
-        if (null != encontrado) {
-            System.out.println("la busqueda de t encontro' " + encontrado.getName() + " y " + encontrado.getNtables() + " numero de mesas");
-        }
-
-        encontrado = findNameRest("cambiado", arbolRestaurants);
-        if (null != encontrado) {
-            System.out.println("la busqueda de cambiado encontro' " + encontrado.getName() + " y " + encontrado.getNtables() + " numero de mesas");
-        }
-
+        
         /*
         //Output de datos en arboles
         arbolRestaurants.postOrder();
         arbolRestaurants.inOrder();
-         */
+         
         arbolRestaurants.preOrder();
         /*
         arbolUsers.postOrder();
@@ -69,20 +71,26 @@ public class ReservaYa {
         arbolUsers.preOrder();
          */
     }
+    
+    //static private Hash loadRest(){
+        
+    //}
 
     static private void updateRest(String namebefore, String nameafter, AVL arbolRestaurants) {
+        long inicio = System.nanoTime();
         AVLNode encontrado = findRest(namebefore, arbolRestaurants);
         Restaurant r = (Restaurant) encontrado.getData();
         arbolRestaurants.remove(r);
         r.setName(nameafter);
         arbolRestaurants.insert(r);
+        long fin = System.nanoTime();
+        System.out.println("Tiempo updateRest: " + (fin - inicio) * 1.0e-9);
         System.out.println("Nombre del Restaurante " + namebefore + " cambiado a: " + r.getName());
     }
 
-    static private AVLNode findUser(String name, AVL arbolUsers) {
-        long inicio = System.nanoTime();
-
+    static private AVLNode findUser(String name, AVL arbolUsers) {        
         User U = new User(name);
+        long inicio = System.nanoTime();
         AVLNode usuarioEncontrado = arbolUsers.search(U);//retorna nodo buscado
         long fin = System.nanoTime();
         System.out.println("Tiempo en encontrar un USER: " + (fin - inicio) * 1.0e-9);
@@ -90,10 +98,9 @@ public class ReservaYa {
 
     }
 
-    static private AVLNode findRest(String name, AVL arbolRestaurants) {
-        long inicio = System.nanoTime();
-
+    static private AVLNode findRest(String name, AVL arbolRestaurants) {      
         Restaurant R = new Restaurant(name);
+        long inicio = System.nanoTime();
         AVLNode restauranteEncontrado = arbolRestaurants.search(R);//retorna nodo buscado
         long fin = System.nanoTime();
         System.out.println("Tiempo en encontrar un RESTAURANT: " + (fin - inicio) * 1.0e-9);
@@ -104,7 +111,7 @@ public class ReservaYa {
     static private AVL loadUsers(AVL arbol) throws IOException {
         FileReader F = null;
         try {
-            F = new FileReader("User.csv");
+            F = new FileReader("User4.csv");
         } catch (FileNotFoundException e) {
             System.out.println("No existe el archivo");
         }
@@ -125,11 +132,11 @@ public class ReservaYa {
         System.out.println("Tiempo loadUsers(): " + (fin - inicio) * 1.0e-9);
         return arbol;
     }
-
+/*
     static private AVL loadRest(AVL R) throws IOException {
         FileReader F = null;
         try {
-            F = new FileReader("Restaurant_1.csv");
+            F = new FileReader("Restauran4.csv");
         } catch (FileNotFoundException e) {
             System.out.println("No existe el archivo");
         }
@@ -148,5 +155,5 @@ public class ReservaYa {
         long fin = System.nanoTime();
         System.out.println("Tiempo loadRest(): " + (fin - inicio) * 1.0e-9);
         return R;
-    }
+    }*/
 }

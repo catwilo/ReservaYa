@@ -1,7 +1,60 @@
-j;9
-e;5
-t;7
-d;7
-ee;7
-ec;9
-eb;10
+j;9;;;;;;;;;;;;
+e;5;;;;;;;;;;;;
+t;7;;;;;Tamaño de datos de;;;;;;;
+d;7;;;;Función;prueba;Tiempo(s);;Nombre de la funcionalidad;Tipo(s) de estructura de datos;Cantidad de datos probados;Análisis realizado (Notación Big O);Tiempos de ejecución(s)
+ee;7;;;;;10000;0.0803183;;Cargar Restaurantes;Árbol AVL;10000;;0.03522
+ec;9;;;;Cargar restaurantes;100000;0.1869753;;;;100000;;0.12774
+eb;10;;;;;1000000;0.7533516;;;;1000000;;0.50438
+;;;;;;10000000;null;;;;10000000;;3.46502
+;;;;;;100000000;null;;;;100000000;;null
+;;;;;;10000;0.0674316;;Cargar Usuarios;Árbol AVL;10000;;0.339096
+;;;;;Cargar usuarios;100000;0.1376219;;;;100000;;0.111634
+;;;;;;1000000;0.660308;;;;1000000;;0.5833361
+;;;;;;10000000;11.76091491;;;;10000000;;4.665166
+;;;;;;100000000;null;;;;100000000;;null
+;;;;;;10000;0.0002705;;Búsqueda de un Restaurante;Árbol AVL;10000;;0.0000108
+;;;;;Búsqueda de un Restaurante;100000;0.000222;;;;100000;;0.0000923
+;;;;;;1000000;0.0000568;;;;1000000;;0.0000543
+;;;;;;10000000;null;;;;10000000;;0.0000511
+;;;;;;100000000;null;;;;100000000;;null
+;;;;;;10000;-0.0000306;;Búsqueda de un Usuario;Árbol AVL;10000;;0.0000061
+;;;;;Búsqueda de un Usuario;100000;-0.00013745;;;;100000;;0.0000043
+;;;;;;1000000;-0.0002443;;;;1000000;;0.0000029
+;;;;;;10000000;null;;;;10000000;;0.0000031
+;;;;;;100000000;null;;;;100000000;;null
+;;;;;;;;;Actualizar Restaurante;Árbol AVL;10000;;0.0002218
+;;;;;;;;;;;100000;;0.0000613
+;;;;;;;;;;;1000000;;0.0000476
+;;;;;;;;;;;10000000;;0.0000729
+;;;;;;;;;;;100000000;;null
+;;;;;;;;;;;;;
+;;;;;;;;;;;;;
+;;;;;;;;;;;;;
+;;;;;;;;;;;;;
+;;;;;;;;;;;;;
+;;;;;INTEGRANTE;ROL(ES);ACTIVIDADES REALIZADAS;;;;;;
+;;;;;;;;;;;;;
+;;;;;Juan Pablo Ortega;Coordinador;Organización de reuniones para el desarrollo del trabajo;;;;;;
+;;;;;;;;;;;;;
+;;;;;;;"Coordinador de las actividades a desarrollar por
+cada integrante del grupo";;;;;;
+;;;;;;;;;;;;;
+;;;;;;Lider;"Estar atento del avance del
+proyecto, así como de las entregas de
+informes y
+avances del software.";;;;;;
+;;;;;;;;;;;;;
+;;;;;;;;;;;;;
+;;;;;;;;;;;;;
+;;;;;;;;;;;;;
+;;;;;;;Atento a la comunicación entre todos los integrantes de;;;;;;
+;;;;;;;;;;;;;
+;;;;;;;Ayuda en el desarrollo del proyecto;;;;;;
+;;;;;;Técnico;;;;;;;
+;;;;;;;Desarrollo del software;;;;;;
+;;;;;Camilo Usuga;;;;;;;;
+;;;;;;Experto;Ayuda a resolver dudas sobre el proyecto;;;;;;
+;;;;;;Investigador;Resuelve dudas del grupo;;;;;;
+;;;;;;;;;;;;;
+;;;;;Santiago Suaza;;Desarrollo de la interfaz gráfica;;;;;;
+;;;;;;Experto;;;;;;;
