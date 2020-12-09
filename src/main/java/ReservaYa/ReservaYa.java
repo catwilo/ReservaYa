@@ -28,8 +28,9 @@ public class ReservaYa {
         arbolUsers = loadUsers(arbolUsers);
          
         Hash R = new Hash();
-        loadRestHash(R);
-        System.out.println(R.get("burger "));
+        //R = loadRestHash(R);
+        R = loadRestHash(R);
+        System.out.println(R.get("restaurante 86302"));
        
         
         
@@ -83,7 +84,7 @@ public class ReservaYa {
         
     //}
     
-    static private void loadRestHash(Hash R){
+    static private Hash loadRestHash(Hash R){
                 FileReader F = null;
         try {
             F = new FileReader("Restaurant.csv");
@@ -108,12 +109,15 @@ public class ReservaYa {
             }
             
             R.add(atributosTemporal.get(0), Integer.parseInt(atributosTemporal.get(1)));
+               System.out.println("V: " + atributosTemporal.get(0) + "K: " + atributosTemporal.get(1));
             System.out.println(linea);
             //R.add(atributosPorRestaurante[0], Integer.parseInt(atributosPorRestaurante[1]));
         } 
         }catch(IOException ex){
             ex.printStackTrace();
         }
+        
+        return R;
     }
 
     static private void updateRest(String namebefore, String nameafter, AVL arbolRestaurants) {
