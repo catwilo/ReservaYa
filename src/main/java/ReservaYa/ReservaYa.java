@@ -23,7 +23,7 @@ public class ReservaYa {
         AVL arbolRestaurants = null, arbolUsers = null;
 
         //carga de arboles ordenando datos por su nombre
-        arbolRestaurants = loadRest(arbolRestaurants);
+        //arbolRestaurants = loadRest(arbolRestaurants);
         arbolUsers = loadUsers(arbolUsers);
          
         
