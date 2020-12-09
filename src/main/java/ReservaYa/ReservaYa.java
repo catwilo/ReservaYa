@@ -23,12 +23,14 @@ public class ReservaYa {
         AVL arbolRestaurants = null, arbolUsers = null;
 
         //carga de arboles ordenando datos por su nombre
-        //arbolRestaurants = loadRest(arbolRestaurants);
+        arbolRestaurants = loadRest(arbolRestaurants);
         arbolUsers = loadUsers(arbolUsers);
+         
         
         
         
-
+        
+        
         /*//BUSCAR UN RESTAURANTE POR EL NOMBRE/**/
         String name = "Amet Inc.";        
         Restaurant restauranteEncontrado = (Restaurant) (findRest(name, arbolRestaurants)).getData();
@@ -105,7 +107,6 @@ public class ReservaYa {
         long fin = System.nanoTime();
         System.out.println("Tiempo en encontrar un RESTAURANT: " + (fin - inicio) * 1.0e-9);
         return restauranteEncontrado;
-
     }
 
     static private AVL loadUsers(AVL arbol) throws IOException {
@@ -131,7 +132,31 @@ public class ReservaYa {
         long fin = System.nanoTime();
         System.out.println("Tiempo loadUsers(): " + (fin - inicio) * 1.0e-9);
         return arbol;
-    }
+    }/*
+        static private HashTable loadUsers(HashTable hash) throws IOException {
+        FileReader F = null;
+        try {
+            F = new FileReader("User4.csv");
+        } catch (FileNotFoundException e) {
+            System.out.println("No existe el archivo");
+        }
+        BufferedReader br = new BufferedReader(F);
+        hash = new HashTable();
+
+        String[] U = br.readLine().split(";");
+        long inicio = System.nanoTime();
+        while (U[0] != null) {
+            hash.insert(new User(Integer.parseInt(U[0]), Integer.parseInt(U[1]), U[2]));
+            try {
+                U = br.readLine().split(";");
+            } catch (Exception r) {
+                U[0] = null;
+            }
+        }
+        long fin = System.nanoTime();
+        System.out.println("Tiempo loadUsers(): " + (fin - inicio) * 1.0e-9);
+        return hash;
+    }*/
 /*
     static private AVL loadRest(AVL R) throws IOException {
         FileReader F = null;
@@ -156,4 +181,5 @@ public class ReservaYa {
         System.out.println("Tiempo loadRest(): " + (fin - inicio) * 1.0e-9);
         return R;
     }*/
+    
 }

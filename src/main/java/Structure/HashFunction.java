@@ -43,7 +43,8 @@ public class HashFunction {
 		// Locate the value 660 in the Hash Table
 
 		theFunc.findKey("660");
-                theFunc.findKey("450");
+                theFunc.findKey("50");
+                
                 
 
 		theFunc.displayTheStack();
