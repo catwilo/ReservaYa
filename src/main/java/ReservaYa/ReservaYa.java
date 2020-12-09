@@ -7,6 +7,7 @@ package ReservaYa;
 
 import Structure.*;
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -26,6 +27,9 @@ public class ReservaYa {
         //arbolRestaurants = loadRest(arbolRestaurants);
         arbolUsers = loadUsers(arbolUsers);
          
+        Hash R = new Hash();
+        loadRestHash(R);
+       
         
         
         
@@ -77,6 +81,39 @@ public class ReservaYa {
     //static private Hash loadRest(){
         
     //}
+    
+    static private void loadRestHash(Hash R){
+                FileReader F = null;
+        try {
+            F = new FileReader("restaurant.csv");
+        } catch (FileNotFoundException e) {
+            System.out.println("No existe el archivo");
+        }
+        BufferedReader br = new BufferedReader(F);
+        R = new Hash<String, Integer>(); 
+       
+        System.out.println(R.size());
+        
+        
+        long inicio = System.nanoTime();   
+       
+        String linea;
+        try{
+           while((linea = br.readLine())!= null){
+            String[] atributosPorRestaurante = linea.split(";");
+            ArrayList<String> atributosTemporal = new ArrayList<String>();
+            for(String atributo:atributosPorRestaurante){
+                atributosTemporal.add(atributo);
+            }
+            
+            R.add(atributosTemporal.get(0), Integer.parseInt(atributosTemporal.get(1)));
+            System.out.println(linea);
+            //R.add(atributosPorRestaurante[0], Integer.parseInt(atributosPorRestaurante[1]));
+        } 
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
+    }
 
     static private void updateRest(String namebefore, String nameafter, AVL arbolRestaurants) {
         long inicio = System.nanoTime();

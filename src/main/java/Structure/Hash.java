@@ -39,7 +39,7 @@ class HashNode<K, V>
 } 
 
 // Class to represent entire hash table 
-class Map<K, V> 
+public class Hash<K, V> 
 { 
 	// bucketArray is used to store array of chains 
 	private ArrayList<HashNode<K, V>> bucketArray; 
@@ -52,10 +52,10 @@ class Map<K, V>
 
 	// Constructor (Initializes capacity, size and 
 	// empty chains. 
-	public Map() 
+	public Hash() 
 	{ 
 		bucketArray = new ArrayList<>(); 
-		numBuckets = 10; 
+		numBuckets = 10000; 
 		size = 0; 
 
 		// Create empty chains 
@@ -178,9 +178,9 @@ class Map<K, V>
 			} 
 		} 
 	} // Driver method to test Map class 
-	public static void main(String[] args) throws IOException 
+	/*public static void main(String[] args) throws IOException 
 	{ 
-		Map map = new Map <String, Integer>(); 
+		Hash map = new Hash <String, Integer>(); 
 		map.add("this",1 ); 
 		map.add("coder",2 ); 
 		map.add("this",4 ); 
@@ -193,12 +193,12 @@ class Map<K, V>
 		System.out.println(map.isEmpty()); 
                 FileReader F = null;
         try {
-            F = new FileReader("Restaurant.csv");
+            F = new FileReader("restaurant3.csv");
         } catch (FileNotFoundException e) {
             System.out.println("No existe el archivo");
         }
         BufferedReader br = new BufferedReader(F);
-        Map R = new Map<String, Integer>(); 
+        Hash R = new Hash<String, Integer>(); 
        
         System.out.println(R.size());
         
@@ -206,7 +206,8 @@ class Map<K, V>
         long inicio = System.nanoTime();   
        
         String linea;
-        while((linea = br.readLine())!= null){
+        try{
+           while((linea = br.readLine())!= null){
             String[] atributosPorRestaurante = linea.split(";");
             ArrayList<String> atributosTemporal = new ArrayList<String>();
             for(String atributo:atributosPorRestaurante){
@@ -216,14 +217,18 @@ class Map<K, V>
             R.add(atributosTemporal.get(0), Integer.parseInt(atributosTemporal.get(1)));
             System.out.println(linea);
             //R.add(atributosPorRestaurante[0], Integer.parseInt(atributosPorRestaurante[1]));
+        } 
+        }catch(IOException ex){
+            ex.printStackTrace();
         }
+        
         
          //System.out.println(R.get(""));
         
                
         
                 
-	} 
+	} */
         
            /* static private void loadRest(Map R) throws IOException {
         FileReader F = null;
