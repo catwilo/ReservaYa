@@ -29,6 +29,7 @@ public class ReservaYa {
          
         Hash R = new Hash();
         loadRestHash(R);
+        System.out.println(R.get("burger "));
        
         
         
@@ -37,8 +38,8 @@ public class ReservaYa {
         
         /*//BUSCAR UN RESTAURANTE POR EL NOMBRE/**/
         String name = "Amet Inc.";        
-        Restaurant restauranteEncontrado = (Restaurant) (findRest(name, arbolRestaurants)).getData();
-        System.out.println(restauranteEncontrado.getName() + " igual a: " + name);
+        //Restaurant restauranteEncontrado = (Restaurant) (findRest(name, arbolRestaurants)).getData();
+        //System.out.println(restauranteEncontrado.getName() + " igual a: " + name);
         
         /*//BUSCAR UN USUARIO POR EL NOMBRE/**/
         
@@ -48,12 +49,12 @@ public class ReservaYa {
         
         /*Actualizar un restaurante/**/
         String newRestaurant = "BK";
-        updateRest(name,newRestaurant, arbolRestaurants);
+        //updateRest(name,newRestaurant, arbolRestaurants);
         /**/
         
         
         /*Eliminar un restaurante/**/
-        arbolRestaurants.remove(restauranteEncontrado);
+        //arbolRestaurants.remove(restauranteEncontrado);
         /**/
         
         
@@ -85,7 +86,7 @@ public class ReservaYa {
     static private void loadRestHash(Hash R){
                 FileReader F = null;
         try {
-            F = new FileReader("Restaurant3.csv");
+            F = new FileReader("Restaurant.csv");
         } catch (FileNotFoundException e) {
             System.out.println("No existe el archivo");
         }

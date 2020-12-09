@@ -39,7 +39,7 @@ public class Hash<K, V>
 	private ArrayList<HashNode<K, V>> bucketArray; 
 
 	
-	private int numBuckets; 
+	private int numDivisor; 
 
 	
 	private int size; 
@@ -48,11 +48,11 @@ public class Hash<K, V>
 	public Hash() 
 	{ 
 		bucketArray = new ArrayList<>(); 
-		numBuckets = 20; 
+		numDivisor = 10; 
 		size = 0; 
 
 		
-		for (int i = 0; i < numBuckets; i++) 
+		for (int i = 0; i < numDivisor; i++) 
 			bucketArray.add(null); 
 	} 
 
@@ -63,9 +63,10 @@ public class Hash<K, V>
 	private int getBucketIndex(K key) 
 	{ 
 		int hashCode = key.hashCode();
-                System.out.println(hashCode);
-		int index = hashCode % numBuckets; 
-                System.out.println(index);
+                //System.out.println(hashCode);
+                int a = Math.abs(hashCode);
+		int index = a % numDivisor; 
+                //System.out.println(index);
 		return index; 
 	} 
 
@@ -89,13 +90,9 @@ public class Hash<K, V>
 			
 			prev = head; 
 			head = head.next; 
-		} 
-
-		
+		} 		
 		if (head == null) 
-			return null; 
-
-		
+			return null; 	
 		size--; 
 
 		
@@ -120,14 +117,15 @@ public class Hash<K, V>
 			if (head.key.equals(key)) 
 				return head.value; 
 			head = head.next; 
-		} 
-
-		
+		} 	
+                
 		return null; 
-	} 
+                
+        } 
 
 	
 	public void add(K key, V value) 
+                
 	{ 
 		
 		int bucketIndex = getBucketIndex(key); 
@@ -152,13 +150,14 @@ public class Hash<K, V>
 		bucketArray.set(bucketIndex, newNode); 
 
 		
-		if ((1.0*size)/numBuckets >= 0.7) 
+		if ((1.0*size)/numDivisor >= 0.7) 
+                    
 		{ 
 			ArrayList<HashNode<K, V>> temp = bucketArray; 
 			bucketArray = new ArrayList<>(); 
-			numBuckets = 2 * numBuckets; 
+			numDivisor = 2 * numDivisor; 
 			size = 0; 
-			for (int i = 0; i < numBuckets; i++) 
+			for (int i = 0; i < numDivisor; i++) 
 				bucketArray.add(null); 
 
 			for (HashNode<K, V> headNode : temp) 
