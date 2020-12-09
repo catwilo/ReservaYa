@@ -55,7 +55,7 @@ public class Hash<K, V>
 	public Hash() 
 	{ 
 		bucketArray = new ArrayList<>(); 
-		numBuckets = 10000; 
+		numBuckets = 20; 
 		size = 0; 
 
 		// Create empty chains 
@@ -70,8 +70,10 @@ public class Hash<K, V>
 	// for a key 
 	private int getBucketIndex(K key) 
 	{ 
-		int hashCode = key.hashCode(); 
+		int hashCode = key.hashCode();
+                System.out.println(hashCode);
 		int index = hashCode % numBuckets; 
+                System.out.println(index);
 		return index; 
 	} 
 

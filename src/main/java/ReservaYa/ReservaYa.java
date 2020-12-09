@@ -85,7 +85,7 @@ public class ReservaYa {
     static private void loadRestHash(Hash R){
                 FileReader F = null;
         try {
-            F = new FileReader("restaurant.csv");
+            F = new FileReader("Restaurant3.csv");
         } catch (FileNotFoundException e) {
             System.out.println("No existe el archivo");
         }
